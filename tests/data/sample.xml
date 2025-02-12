@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="0.92">
+    <channel>
+        <item>
+            <title>TEST-001: Implementar nueva funcionalidad</title>
+            <link>https://jira.company.com/browse/TEST-001</link>
+            <key>TEST-001</key>
+            <type>New Feature</type>
+            <priority>High</priority>
+            <status>In Progress</status>
+            <created>Wed, 5 Feb 2025 09:30:00 -0500</created>
+            <updated>Wed, 5 Feb 2025 14:45:00 -0500</updated>
+            <summary>Implementar nueva funcionalidad de exportación</summary>
+            <assignee>john.doe</assignee>
+            <reporter>jane.smith</reporter>
+            <customfields>
+                <customfield>
+                    <customfieldname>Empresa</customfieldname>
+                    <customfieldvalue>ACME Corp</customfieldvalue>
+                </customfield>
+                <customfield>
+                    <customfieldname>Tipo tarea</customfieldname>
+                    <customfieldvalue>Desarrollo</customfieldvalue>
+                </customfield>
+                <customfield>
+                    <customfieldname>Horas utilizadas</customfieldname>
+                    <customfieldvalue>8.5</customfieldvalue>
+                </customfield>
+            </customfields>
+        </item>
+        <item>
+            <title>TEST-002: Corregir bug en interfaz</title>
+            <link>https://jira.company.com/browse/TEST-002</link>
+            <key>TEST-002</key>
+            <type>Bug</type>
+            <priority>Medium</priority>
+            <status>Done</status>
+            <created>Wed, 5 Feb 2025 10:15:00 -0500</created>
+            <updated>Wed, 5 Feb 2025 16:20:00 -0500</updated>
+            <summary>Corregir error en la visualización de datos</summary>
+            <assignee>alice.johnson</assignee>
+            <reporter>bob.wilson</reporter>
+            <customfields>
+                <customfield>
+                    <customfieldname>Empresa</customfieldname>
+                    <customfieldvalue>TechCo</customfieldvalue>
+                </customfield>
+                <customfield>
+                    <customfieldname>Tipo tarea</customfieldname>
+                    <customfieldvalue>Mantenimiento</customfieldvalue>
+                </customfield>
+                <customfield>
+                    <customfieldname>Horas utilizadas</customfieldname>
+                    <customfieldvalue>4.0</customfieldvalue>
+                </customfield>
+            </customfields>
+        </item>
+    </channel>
+</rss>

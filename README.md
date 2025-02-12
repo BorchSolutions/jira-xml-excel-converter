@@ -1,162 +1,162 @@
-# Jira XML to Excel Converter
+# Conversor de XML de Jira a Excel
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
 [![Made with Pandas](https://img.shields.io/badge/Made%20with-Pandas-1f425f.svg)](https://pandas.pydata.org/)
 
-A Python GUI application that converts Jira XML exports to Excel (.xlsx) with custom field support, date formatting, and hyperlink preservation. Features progress tracking, error handling, and automated column formatting.
+Una aplicación GUI en Python que convierte exportaciones XML de Jira a Excel (.xlsx) con soporte para campos personalizados, formato de fechas y preservación de hipervínculos. Incluye seguimiento de progreso, manejo de errores y formato automático de columnas.
 
-<img src="/api/placeholder/800/400" alt="Application Screenshot">
+<img src="docs/images/screenshot_01.png" alt="Captura de pantalla de la aplicación">
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone https://github.com/yourusername/jira-xml-excel-converter.git
 
-# Navigate to the project directory
+# Navegar al directorio del proyecto
 cd jira-xml-excel-converter
 
-# Install required packages
+# Instalar paquetes requeridos
 pip install -r requirements.txt
 
-# Run the application
+# Ejecutar la aplicación
 python jira-to-excel.py
 ```
 
-## ✨ Features
+## ✨ Características
 
-- **User-Friendly GUI**
-  - Simple and intuitive window interface
-  - Progress bar for tracking conversion status
-  - Status and error messages
-  - File selection button
+- **Interfaz Gráfica Amigable**
+  - Ventana simple e intuitiva
+  - Barra de progreso para seguimiento de la conversión
+  - Mensajes de estado y error
+  - Botón de selección de archivo
 
-- **Data Processing**
-  - XML parsing with encoding handling
-  - Standard and custom field extraction
-  - Date conversion to dd/mm/yyyy format
-  - Date and time column separation
+- **Procesamiento de Datos**
+  - Análisis XML con manejo de codificación
+  - Extracción de campos estándar y personalizados
+  - Conversión de fechas a formato dd/mm/yyyy
+  - Separación de columnas de fecha y hora
 
-- **Excel Formatting**
-  - Active hyperlinks to Jira tasks
-  - Numeric formatting for hours
-  - Automatic column width adjustment
-  - Visual styles for better readability
+- **Formato Excel**
+  - Hipervínculos activos a tareas de Jira
+  - Formato numérico para horas
+  - Ajuste automático del ancho de columnas
+  - Estilos visuales para mejor legibilidad
 
-## 📋 Processed Fields
+## 📋 Campos Procesados
 
-- Task Code (with active hyperlink)
-- Type
-- Priority
-- Company (custom field)
-- Task Type (custom field)
-- Hours Used (numeric field)
-- Status
-- Summary
-- Assignee
-- Reporter
-- Creation and Update dates/times
+- Código de tarea (con hipervínculo activo)
+- Tipo
+- Prioridad
+- Empresa (campo personalizado)
+- Tipo de Tarea (campo personalizado)
+- Horas Utilizadas (campo numérico)
+- Estado
+- Resumen
+- Asignado
+- Reportado por
+- Fechas y horas de creación y actualización
 
-## 🛠 Requirements
+## 🛠 Requisitos
 
-### Dependencies
+### Dependencias
 ```bash
 pip install pandas openpyxl
 ```
 
-### Libraries Used
-- `xml.etree.ElementTree`: XML processing
-- `pandas`: Data handling and Excel export
-- `tkinter`: GUI interface
-- `openpyxl`: Advanced Excel formatting
-- `datetime`: Date and time handling
-- `codecs`: File encoding management
-- `threading`: Background processing
+### Bibliotecas Utilizadas
+- `xml.etree.ElementTree`: Procesamiento XML
+- `pandas`: Manejo de datos y exportación a Excel
+- `tkinter`: Interfaz gráfica
+- `openpyxl`: Formato avanzado de Excel
+- `datetime`: Manejo de fechas y horas
+- `codecs`: Gestión de codificación de archivos
+- `threading`: Procesamiento en segundo plano
 
-## 📖 Usage
+## 📖 Uso
 
-1. Run the application:
+1. Ejecutar la aplicación:
    ```python
    python jira-to-excel.py
    ```
 
-2. Follow these steps:
-   - Click "Select XML File"
-   - Choose your Jira XML export
-   - Wait for processing to complete
-   - Find the Excel file in the same location
+2. Seguir estos pasos:
+   - Hacer clic en "Seleccionar archivo XML"
+   - Elegir la exportación XML de Jira
+   - Esperar a que se complete el procesamiento
+   - Encontrar el archivo Excel en la misma ubicación
 
-3. Output:
-   - Excel file named: `jira_export_[TIMESTAMP].xlsx`
-   - All processed columns included
-   - Optimized format for filtering and analysis
+3. Salida:
+   - Archivo Excel nombrado: `jira_export_[TIMESTAMP].xlsx`
+   - Todas las columnas procesadas incluidas
+   - Formato optimizado para filtrado y análisis
 
-## 🏗 Code Structure
+## 🏗 Estructura del Código
 
-### Main Class: `JiraXMLConverter`
+### Clase Principal: `JiraXMLConverter`
 
-#### Interface Methods
-- `__init__`: Window initialization
-- `setup_ui`: Visual elements configuration
-- `run`: Application startup
+#### Métodos de Interfaz
+- `__init__`: Inicialización de ventana
+- `setup_ui`: Configuración de elementos visuales
+- `run`: Inicio de aplicación
 
-#### Processing Methods
-- `process_file`: File selection handling
-- `process_xml`: Main XML processing
-- `parse_jira_date`: Date conversion
-- `clean_xml_content`: XML cleaning
+#### Métodos de Procesamiento
+- `process_file`: Manejo de selección de archivo
+- `process_xml`: Procesamiento principal de XML
+- `parse_jira_date`: Conversión de fechas
+- `clean_xml_content`: Limpieza de XML
 
-#### Extraction Methods
-- `get_text`: XML element text extraction
-- `get_customfield_value`: Custom fields processing
-- `get_assignee`: Assignee retrieval
-- `get_reporter`: Reporter retrieval
+#### Métodos de Extracción
+- `get_text`: Extracción de texto de elementos XML
+- `get_customfield_value`: Procesamiento de campos personalizados
+- `get_assignee`: Obtención de asignado
+- `get_reporter`: Obtención de reportero
 
-## ⚠️ Important Notes
+## ⚠️ Notas Importantes
 
-- XML must be a valid Jira export
-- Custom fields must exist in the XML
-- Dates are processed considering timezone
-- Hours are formatted with one decimal place
-- Hyperlinks point to Jira tasks
+- El XML debe ser una exportación válida de Jira
+- Los campos personalizados deben existir en el XML
+- Las fechas se procesan considerando la zona horaria
+- Las horas se formatean con un decimal
+- Los hipervínculos apuntan a las tareas en Jira
 
-## 🐛 Error Handling
+## 🐛 Manejo de Errores
 
-- XML file validation
-- Special character handling
-- Safe numeric data conversion
-- Descriptive error messages
-- Error logging recovery
+- Validación de archivo XML
+- Manejo de caracteres especiales
+- Conversión segura de datos numéricos
+- Mensajes de error descriptivos
+- Recuperación de errores por registro
 
-## 🤝 Contributing
+## 🤝 Contribuciones
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+¡Las contribuciones son bienvenidas! No dudes en enviar un Pull Request. Para cambios mayores, por favor abre primero un issue para discutir lo que te gustaría cambiar.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Haz un fork del proyecto
+2. Crea tu rama de características (`git checkout -b feature/CaracteristicaIncreible`)
+3. Haz commit de tus cambios (`git commit -m 'Agrega alguna CaracteristicaIncreible'`)
+4. Haz push a la rama (`git push origin feature/CaracteristicaIncreible`)
+5. Abre un Pull Request
 
-## 📄 License
+## 📄 Licencia
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
-## 👤 Author
+## 👤 Autor
 
-Bryan Ramírez - [Your GitHub Profile](https://github.com/ezzeker)
+Bryan Ramírez - [Tu Perfil de GitHub](https://github.com/ezzeker)
 
-## 🙏 Acknowledgments
+## 🙏 Agradecimientos
 
-- Jira for the XML export functionality
-- Python community for the amazing libraries
-- All contributors who help improve this tool
+- A Jira por la funcionalidad de exportación XML
+- A la comunidad Python por las increíbles bibliotecas
+- A todos los contribuidores que ayudan a mejorar esta herramienta
 
-## 📝 To-Do
+## 📝 Por Hacer
 
-- [ ] Add support for multiple XML files
-- [ ] Implement custom field mapping
-- [ ] Add export templates
-- [ ] Support for different date formats
-- [ ] Dark mode for GUI
+- [ ] Agregar soporte para múltiples archivos XML
+- [ ] Implementar mapeo de campos personalizados
+- [ ] Agregar plantillas de exportación
+- [ ] Soporte para diferentes formatos de fecha
+- [ ] Modo oscuro para la GUI
