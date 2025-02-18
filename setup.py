@@ -9,7 +9,7 @@ setup(
         "openpyxl>=3.0.0",
     ],
     author="Bryan Ramírez",
-    author_email="tu@email.com",
+    author_email="bryan@ramirezchavez.net",
     description="A GUI tool that converts Jira XML exports to Excel with formatting",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

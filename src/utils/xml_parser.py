@@ -96,12 +96,6 @@ class XMLParser:
     def _process_single_item(self, item):
         """
         Procesa un único item del XML.
-        
-        Args:
-            item: Elemento XML del item
-            
-        Returns:
-            dict: Datos procesados del item
         """
         fecha_creacion, hora_creacion = self.data_handler.parse_jira_date(
             self._get_text(item, 'created')
@@ -109,6 +103,11 @@ class XMLParser:
         fecha_actualizacion, hora_actualizacion = self.data_handler.parse_jira_date(
             self._get_text(item, 'updated')
         )
+        
+        # Obtener fecha de inicio desde el campo personalizado
+        fecha_inicio = self._get_customfield_value(item, 'Start date')
+        if fecha_inicio:
+            fecha_inicio, _ = self.data_handler.parse_jira_date(fecha_inicio)
 
         return {
             'Código': self._get_text(item, 'key'),
@@ -123,12 +122,12 @@ class XMLParser:
             ),
             'Asignado': self._get_assignee(item),
             'Reportado por': self._get_reporter(item),
+            'Fecha Inicio': fecha_inicio,  # Nueva columna
             'Fecha Creación': fecha_creacion,
             'Hora Creación': hora_creacion,
             'Fecha Actualización': fecha_actualizacion,
             'Hora Actualización': hora_actualizacion
         }
-
     def _get_text(self, item, tag):
         """
         Obtiene el texto de un elemento XML de forma segura.

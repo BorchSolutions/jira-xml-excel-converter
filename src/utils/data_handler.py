@@ -14,19 +14,31 @@ class DataHandler:
         Convierte una fecha de Jira al formato deseado.
         
         Args:
-            date_str (str): Fecha en formato Jira (ej: "Wed, 5 Feb 2025 12:30:00 -0500")
-            
+            date_str (str): Fecha en formato Jira
+                
         Returns:
             tuple: (fecha en formato dd/mm/yyyy, hora en formato HH:MM:SS)
         """
+        if not date_str:
+            return "", ""
+            
         try:
-            dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %z")
-            fecha = dt.strftime("%d/%m/%Y")
-            hora = dt.strftime("%H:%M:%S")
-            return fecha, hora
+            formats = [
+                "%a, %d %b %Y %H:%M:%S %z", #Formato Estandar
+                "%a, %d %b %Y %H:%M:%S +0000", #Formato Alternativo
+                "%Y-%m-%d %H:%M:%S", #Formato ISO
+            ]
+            
+            for date_format in formats:
+                try:
+                    dt = datetime.strptime(date_str, date_format)
+                    return dt.strftime("%d/%m/%Y"), dt.strftime("%H:%M:%S")
+                except ValueError:
+                    continue
+                    
+            return "", ""
         except Exception:
             return "", ""
-
     @staticmethod
     def clean_field_value(value):
         """
